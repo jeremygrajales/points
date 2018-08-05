@@ -1,1 +1,97 @@
-Hello world!
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.min.css" media="all" />
+    </link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js">
+    </script>
+</head>
+
+<body>
+    <section>
+        <form>
+            <div class="row">
+                <div class="column small-4">
+
+                    <label>0
+                        <input id="points_0" name="points_0" data-low=".5" data-high="1" class="points-input" value="0" />
+                    </label></div>
+                <div class="column small-4">
+
+                    <label>1
+                        <input id="points_1" name="points_1" data-low="1" data-high="2" class="points-input" value="0" />
+                    </label></div>
+                <div class="column small-4">
+                    <label>2
+                        <input id="points_2" name="points_2" data-low="2" data-high="4" class="points-input" value="0" />
+                    </label>
+                </div>
+                <div class="column small-4">
+
+                    <label>3
+                        <input id="points_3" name="points_3" data-low="4" data-high="8" class="points-input" value="0" />
+                    </label></div>
+                <div class="column small-4">
+
+                    <label>4
+                        <input id="points_4" name="points_4" data-low="8" data-high="16" class="points-input" value="0" />
+                    </label></div>
+                <div class="column small-4">
+
+                    <label>5
+                        <input id="points_5" name="points_5" data-low="16" data-high="32" class="points-input" value="0" />
+                    </label></div>
+                <div class="column small-4">
+                    <label>6
+                        <input id="points_6" name="points_6" data-low="32" data-high="64" class="points-input" value="0" />
+                    </label></div>
+                <div class="column small-4 end">
+
+                    <label>7
+                        <input id="points_7" name="points_7" data-low="64" data-high="128" class="points-input" value="0" />
+                    </label>
+                </div>
+            </div>
+
+            <label>Hours</label>
+
+            <div class="row">
+                <div class="column small-12">
+                    <label>Low (hrs)
+                        <input id="low_hrs" name="low_hrs" value="" disabled="disabled" />
+                    </label>
+                    <label>High (hrs)
+                        <input id="high_hrs" name="high_hrs" value="" disabled="disabled" />
+                    </label>
+                </div>
+            </div>
+        </form>
+
+    </section>
+    <script>
+        $(document).ready(function() {
+
+            $low = $('#low_hrs');
+            $high = $('#high_hrs');
+            
+            $('.points-input').on('keyup change', function(e) {
+                var low = 0;
+                var high = 0;
+                $('.points-input').each(function(i, e) {
+                	var val = parseInt($(e).val());
+                    low += parseFloat($(e).data('low'))*val;
+                    high += parseFloat($(e).data('high'))*val;
+                });
+                $low.val(low);
+                $high.val(high);
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
